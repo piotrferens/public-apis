@@ -53,7 +53,9 @@ class App extends Component {
   };
 
   onCategoryClick = category => {
-    const visibleData = this.state.data.filter(e => e.Category === category);
+    const visibleData = this.state.data.filter(
+      e => e.Category.toLowerCase() === category.toLowerCase()
+    );
     this.setState({
       isListCategoryVisible: false,
       selectedCategory: category,
@@ -63,7 +65,7 @@ class App extends Component {
 
   onKeyDown = event => {
     if (event.keyCode === 13) {
-      this.fetchUser(this.state.searchCategory);
+      this.onCategoryClick(this.state.searchCategory);
     }
   };
 
